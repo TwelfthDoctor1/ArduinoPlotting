@@ -98,11 +98,13 @@ while True:
 
         # Print Out On Console
         print("================================================================================================")
+        print(f"Cycle: {CYCLES}/{MAX_CYCLES}")
         print(f"[Acceleration] -> X: {ser_data[1]} | Y: {ser_data[2]} | Z: {ser_data[3]} | Combined: {acc_comb}")
         print(f"[Rotation] -> X: {ser_data[4]} | Y: {ser_data[5]} | Z: {ser_data[6]}")
         print(f"[Temperature] -> {ser_data[7]} degC")
 
         master_logger.log(
+            f"[Cycles] -> {CYCLES}/{MAX_CYCLES}\n"
             f"[Acceleration] -> X: {ser_data[1]} | Y: {ser_data[2]} | Z: {ser_data[3]} | Combined: {acc_comb}\n"
             f"[Rotation] -> X: {ser_data[4]} | Y: {ser_data[5]} | Z: {ser_data[6]}\n"
             f"[Temperature] -> {ser_data[7]} degC"
@@ -124,6 +126,9 @@ while True:
             CYCLES += 1
 
         else:
+            print("================================================================================================")
+            print(f"Experiment Cycle of {MAX_CYCLES} finished. Plotting Graph...")
+
             for i in range(len(ACC_DATA)):
                 TIME_AXIS.append(i)
 
@@ -138,6 +143,8 @@ while True:
             plot.ylabel("Acceleration (ms-2)")
             plot.grid()
             plot.legend(["Combined", "X", "Y", "Z"])
+
+            print(f"Please check graph for details. To save, access via the Python Graph.")
 
             plot.show()
             break

@@ -34,4 +34,4 @@ master_logger_enabler = True
 delete_old_apprentice_log = True
 
 # Delete old MasterLogger Logs
-delete_old_master_log = True
+delete_old_master_log = False
